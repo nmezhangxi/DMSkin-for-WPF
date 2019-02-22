@@ -7,18 +7,14 @@ namespace DMSkin.WPF.Controls
 {
     public class DMSystemButton : Button
     {
-        public DMSystemButton()
-        {
-        }
-
         [Description("窗体系统按钮大小"), Category("DMSkin")]
-        public int DMSystemButtonSize
+        public double DMSystemButtonSize
         {
-            get { return (int)GetValue(DMSystemButtonSizeProperty); }
+            get { return (double)GetValue(DMSystemButtonSizeProperty); }
             set { SetValue(DMSystemButtonSizeProperty, value); }
         }
         public static readonly DependencyProperty DMSystemButtonSizeProperty =
-            DependencyProperty.Register("DMSystemButtonSize", typeof(int), typeof(DMSystemButton), new PropertyMetadata(30));
+            DependencyProperty.Register("DMSystemButtonSize", typeof(double), typeof(DMSystemButton), new PropertyMetadata(30.0));
 
         [Description("窗体系统按钮鼠标悬浮背景颜色"), Category("DMSkin")]
         public SolidColorBrush DMSystemButtonHoverColor
@@ -64,9 +60,6 @@ namespace DMSkin.WPF.Controls
         public static readonly DependencyProperty IconProperty =
             DependencyProperty.Register("Icon", typeof(Geometry), typeof(DMSystemButton), new PropertyMetadata(null));
 
-
-
-
         /// <summary>
         /// 图标宽度
         /// </summary>
@@ -77,8 +70,6 @@ namespace DMSkin.WPF.Controls
         }
         public static readonly DependencyProperty IconWidthProperty =
             DependencyProperty.Register("IconWidth", typeof(double), typeof(DMSystemButton), new PropertyMetadata(15.0));
-
-
 
         /// <summary>
         /// 图标高度

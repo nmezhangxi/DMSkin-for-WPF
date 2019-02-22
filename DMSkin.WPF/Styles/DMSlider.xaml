@@ -14,7 +14,7 @@
                                 Background="{TemplateBinding Panel.Background}"
                                 BorderBrush="{TemplateBinding Border.BorderBrush}"
                                 BorderThickness="{TemplateBinding Border.BorderThickness}"
-                                SnapsToDevicePixels="True">
+                                UseLayoutRounding="True">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />
@@ -56,8 +56,8 @@
                                             <Rectangle
                                                 Name="PART_SelectionRange"
                                                 Width="4"
-                                                Fill="{StaticResource MainColor}"
-                                                Stroke="{StaticResource MainColor}"
+                                                Fill="{StaticResource ThemeColor}"
+                                                Stroke="{StaticResource ThemeColor}"
                                                 StrokeThickness="1"
                                                 Visibility="Hidden" />
                                         </Canvas>
@@ -134,7 +134,7 @@
                                                         <Setter Property="Control.Template">
                                                             <Setter.Value>
                                                                 <ControlTemplate TargetType="Thumb">
-                                                                    <Canvas SnapsToDevicePixels="True">
+                                                                    <Canvas UseLayoutRounding="True">
                                                                         <Canvas.RenderTransform>
                                                                             <TransformGroup>
                                                                                 <TransformGroup.Children>
@@ -347,7 +347,7 @@
                                                 <Setter Property="Control.Template">
                                                     <Setter.Value>
                                                         <ControlTemplate TargetType="Thumb">
-                                                            <Canvas SnapsToDevicePixels="True">
+                                                            <Canvas UseLayoutRounding="True">
                                                                 <Canvas.RenderTransform>
                                                                     <TransformGroup>
                                                                         <TransformGroup.Children>
@@ -523,7 +523,7 @@
                                                 <Setter Property="Control.Template">
                                                     <Setter.Value>
                                                         <ControlTemplate TargetType="Thumb">
-                                                            <Canvas SnapsToDevicePixels="True">
+                                                            <Canvas UseLayoutRounding="True">
                                                                 <Canvas.RenderTransform>
                                                                     <TransformGroup>
                                                                         <TransformGroup.Children>
@@ -728,7 +728,7 @@
                         Background="{TemplateBinding Panel.Background}"
                         BorderBrush="{TemplateBinding Border.BorderBrush}"
                         BorderThickness="{TemplateBinding Border.BorderThickness}"
-                        SnapsToDevicePixels="True">
+                        UseLayoutRounding="True">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
@@ -762,7 +762,7 @@
                                     <Rectangle
                                         Name="PART_SelectionRange"
                                         Height="5"
-                                        Fill="{StaticResource MainColor}"
+                                        Fill="{StaticResource ThemeColor}"
                                         Visibility="Hidden" />
                                 </Canvas>
                             </Border>
@@ -838,7 +838,7 @@
                                                 <Setter Property="Control.Template">
                                                     <Setter.Value>
                                                         <ControlTemplate TargetType="Thumb">
-                                                            <!--<Canvas SnapsToDevicePixels="True">
+                                                            <!--<Canvas UseLayoutRounding="True">
                                                                 <Canvas.RenderTransform>
                                                                     <TranslateTransform X="5.5" Y="11" />
                                                                 </Canvas.RenderTransform>
@@ -867,7 +867,7 @@
                                                                     Height="5"
                                                                     HorizontalAlignment="Center"
                                                                     VerticalAlignment="Center"
-                                                                    Fill="{StaticResource MainColor}" />
+                                                                    Fill="{StaticResource ThemeColor}" />
                                                             </Grid>
                                                             <!--<ControlTemplate.Triggers>
                                                                 <Trigger Property="UIElement.IsMouseOver">
@@ -1046,7 +1046,7 @@
                                         <Setter Property="Control.Template">
                                             <Setter.Value>
                                                 <ControlTemplate TargetType="Thumb">
-                                                    <Canvas SnapsToDevicePixels="True">
+                                                    <Canvas UseLayoutRounding="True">
                                                         <Canvas.RenderTransform>
                                                             <TransformGroup>
                                                                 <TransformGroup.Children>
@@ -1227,7 +1227,7 @@
                                         <Setter Property="Control.Template">
                                             <Setter.Value>
                                                 <ControlTemplate TargetType="Thumb">
-                                                    <Canvas SnapsToDevicePixels="True">
+                                                    <Canvas UseLayoutRounding="True">
                                                         <Canvas.RenderTransform>
                                                             <TranslateTransform X="5" Y="9" />
                                                         </Canvas.RenderTransform>
@@ -1403,6 +1403,7 @@
             </Setter.Value>
         </Setter>
     </Style>
+
     <Style
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -1419,7 +1420,7 @@
                                 Background="{TemplateBinding Panel.Background}"
                                 BorderBrush="{TemplateBinding Border.BorderBrush}"
                                 BorderThickness="{TemplateBinding Border.BorderThickness}"
-                                SnapsToDevicePixels="True">
+                                UseLayoutRounding="True">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />
@@ -1538,7 +1539,7 @@
                                                         <Setter Property="Control.Template">
                                                             <Setter.Value>
                                                                 <ControlTemplate TargetType="Thumb">
-                                                                    <Canvas SnapsToDevicePixels="True">
+                                                                    <Canvas UseLayoutRounding="True">
                                                                         <Canvas.RenderTransform>
                                                                             <TransformGroup>
                                                                                 <TransformGroup.Children>
@@ -1751,7 +1752,7 @@
                                                 <Setter Property="Control.Template">
                                                     <Setter.Value>
                                                         <ControlTemplate TargetType="Thumb">
-                                                            <Canvas SnapsToDevicePixels="True">
+                                                            <Canvas UseLayoutRounding="True">
                                                                 <Canvas.RenderTransform>
                                                                     <TransformGroup>
                                                                         <TransformGroup.Children>
@@ -1927,7 +1928,7 @@
                                                 <Setter Property="Control.Template">
                                                     <Setter.Value>
                                                         <ControlTemplate TargetType="Thumb">
-                                                            <Canvas SnapsToDevicePixels="True">
+                                                            <Canvas UseLayoutRounding="True">
                                                                 <Canvas.RenderTransform>
                                                                     <TransformGroup>
                                                                         <TransformGroup.Children>
@@ -2137,7 +2138,7 @@
                         Background="{TemplateBinding Panel.Background}"
                         BorderBrush="{TemplateBinding Border.BorderBrush}"
                         BorderThickness="{TemplateBinding Border.BorderThickness}"
-                        SnapsToDevicePixels="True">
+                        UseLayoutRounding="True">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
@@ -2246,7 +2247,7 @@
                                                 <Setter Property="Control.Template">
                                                     <Setter.Value>
                                                         <ControlTemplate TargetType="Thumb">
-                                                            <!--<Canvas SnapsToDevicePixels="True">
+                                                            <!--<Canvas UseLayoutRounding="True">
                                                                 <Canvas.RenderTransform>
                                                                     <TranslateTransform X="5.5" Y="11" />
                                                                 </Canvas.RenderTransform>
@@ -2456,7 +2457,7 @@
                                         <Setter Property="Control.Template">
                                             <Setter.Value>
                                                 <ControlTemplate TargetType="Thumb">
-                                                    <Canvas SnapsToDevicePixels="True">
+                                                    <Canvas UseLayoutRounding="True">
                                                         <Canvas.RenderTransform>
                                                             <TransformGroup>
                                                                 <TransformGroup.Children>
@@ -2637,7 +2638,7 @@
                                         <Setter Property="Control.Template">
                                             <Setter.Value>
                                                 <ControlTemplate TargetType="Thumb">
-                                                    <Canvas SnapsToDevicePixels="True">
+                                                    <Canvas UseLayoutRounding="True">
                                                         <Canvas.RenderTransform>
                                                             <TranslateTransform X="5" Y="9" />
                                                         </Canvas.RenderTransform>

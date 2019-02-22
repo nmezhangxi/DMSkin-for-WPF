@@ -1,3 +1,4 @@
+using DMSkin.Core.WIN32;
 using System;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
@@ -13,7 +14,7 @@ using System.Windows.Threading;
 namespace DMSkin.WPF
 {
     /// <summary>
-    /// 双层双体
+    /// 双层双体 - 在Windows 7上面 系统按钮区域还存在一些BUG。
     /// </summary>
     public partial class DMSkinComplexWindow : Window
     {
@@ -172,7 +173,7 @@ namespace DMSkin.WPF
                 IntPtr hRgn = NativeMethods.CreatePolygonRgn(ref poin[0], 4, 0);
                 NativeMethods.SetWindowRgn(Handle, hRgn, true);
                 ReWindowState = false;
-                //Debug.WriteLine("触发时间:" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"));
+                //("触发时间:" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"));
             });
         }
 
@@ -214,7 +215,7 @@ namespace DMSkin.WPF
                         wParam.ToInt32() == (int)HitTest.HTMINBUTTON ||
                         wParam.ToInt32() == (int)HitTest.HTHELP)
                     {
-                        NativeMethods.SendMessage(Handle, (int)WindowMessages.WM_NCPAINT, 0, 0);
+                        NativeMethods.SendMessage(Handle, (int)WindowMessages.WM_NCPAINT, IntPtr.Zero, IntPtr.Zero);
                         handled = true;
                     }
                     break;
@@ -386,7 +387,7 @@ namespace DMSkin.WPF
                         shadowWindowState = false;
                         //激活当前窗口
                         Activate();
-                        //Debug.Write(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"));
+                        //(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"));
                     }));
                 });
             }
@@ -425,7 +426,7 @@ namespace DMSkin.WPF
         {
             if (e.OriginalSource is Grid || e.OriginalSource is Window || e.OriginalSource is Border)
             {
-                NativeMethods.SendMessage(Handle, NativeConstants.WM_NCLBUTTONDOWN, (int)HitTest.HTCAPTION, 0);
+                NativeMethods.SendMessage(Handle, NativeConstants.WM_NCLBUTTONDOWN, (IntPtr)HitTest.HTCAPTION, IntPtr.Zero);
                 return;
             }
         }
@@ -434,9 +435,9 @@ namespace DMSkin.WPF
 
         #region 窗体属性
 
-        private int _DMWindowShadowSize = 10;
+        private double _DMWindowShadowSize = 10.0;
         [Description("窗体阴影大小"), Category("DMSkin")]
-        public int DMWindowShadowSize
+        public double DMWindowShadowSize
         {
             get
             {

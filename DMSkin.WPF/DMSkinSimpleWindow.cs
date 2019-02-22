@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DMSkin.Core.WIN32;
+using System;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -12,7 +13,7 @@ using System.Windows.Media;
 namespace DMSkin.WPF
 {
     /// <summary>
-    /// 单层窗体
+    /// 单层窗体 - 嵌入GDI+组件的时候 会出现空域问题。请百度WPF空域问题。(Microsoft.DwayneNeed)
     /// </summary>
     public partial class DMSkinSimpleWindow:Window
     {
@@ -236,7 +237,7 @@ namespace DMSkin.WPF
         {
             if (e.OriginalSource is Grid || e.OriginalSource is Window || e.OriginalSource is Border)
             {
-                NativeMethods.SendMessage(Handle,(int)WindowMessages.WM_NCLBUTTONDOWN, (int)HitTest.HTCAPTION, 0);
+                NativeMethods.SendMessage(Handle,(int)WindowMessages.WM_NCLBUTTONDOWN, (IntPtr)HitTest.HTCAPTION, IntPtr.Zero);
                 return;
             }
         }
@@ -254,13 +255,13 @@ namespace DMSkin.WPF
             DependencyProperty.Register("DMFullScreen", typeof(bool), typeof(DMSkinSimpleWindow), new PropertyMetadata(false));
 
         [Description("窗体阴影大小"), Category("DMSkin")]
-        public int DMWindowShadowSize
+        public double DMWindowShadowSize
         {
-            get { return (int)GetValue(DMWindowShadowSizeProperty); }
+            get { return (double)GetValue(DMWindowShadowSizeProperty); }
             set { SetValue(DMWindowShadowSizeProperty, value); }
         }
         public static readonly DependencyProperty DMWindowShadowSizeProperty =
-            DependencyProperty.Register("DMWindowShadowSize", typeof(int), typeof(DMSkinSimpleWindow), new PropertyMetadata(10));
+            DependencyProperty.Register("DMWindowShadowSize", typeof(double), typeof(DMSkinSimpleWindow), new PropertyMetadata(10.0));
 
         [Description("窗体阴影颜色"), Category("DMSkin")]
         public Color DMWindowShadowColor

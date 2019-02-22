@@ -1,15 +1,20 @@
 # DMSkin-for-WPF
 
 ![](https://img.shields.io/badge/.NET-%3E%3D3.5-brightgreen.svg)
-![](https://img.shields.io/badge/version-2.5.0.5-blue.svg)
+![](https://img.shields.io/badge/version-2.5.1.1-blue.svg)
 ![](https://img.shields.io/badge/license-MIT-green.svg)
 
 #### 一个强大的WPF无边框窗体框架和控件库组合。
 
-<img src="https://raw.githubusercontent.com/944095635/DMSkin-for-WPF/master/DMSkin.ScreenShot/demo.png" align="center">
+<img src="https://raw.githubusercontent.com/944095635/DMSkin-for-WPF/master/DMSkin.ScreenShot/demo1.png" align="center">
+<img src="https://raw.githubusercontent.com/944095635/DMSkin-for-WPF/master/DMSkin.ScreenShot/demo2.png" align="center">
 
 ## 前言 
-DMSkin-for-WPF (简称 DFW) 是一个强大的WPF无边框窗体框架和控件库组合。支持窗体阴影、窗体过渡动画，自带优雅的控件库，旨在帮助开发者更加高效、迅速地创建出优美的WPF界面。它支持的.NET Framework版本从3.5到4.7，并支持从Windows XP到Window 10的所有系统版本。
+DMSkin-for-WPF (简称 DFW) 是一个强大的WPF无边框窗体框架和控件库组合。支持窗体阴影、窗体过渡动画，自带优雅的控件库，旨在帮助开发者更加高效、迅速地创建出优美的WPF界面。
+
+## 支持的 **`.NET Framework 3.5`** 到 **`.NET Framework 3.5 4.7`**，并支持从Windows XP到Window 10的所有系统版本。
+
+## 如果你的软件仅仅考虑兼容 Windows10 + ，.NET Framework 4.5+,可以考虑使用官网方案:[WindowChrome](https://github.com/944095635/WindowChrome-Demo),但是这些库在Windows7 上面不会产生阴影。（.NET Framework 3.5 可以使用System.Windows.Shell实现）
 
 DFW为窗体无边框提供了两种方案：
 #### 1. 双层方案
@@ -45,7 +50,46 @@ DFW为窗体无边框提供了两种方案：
 ## 用法 & 配置
 #### 1. 创建一个WPF项目
 #### 2. [添加 DMSkin.WPF.dll 引用](https://www.jb51.net/softjc/466183.html)
-#### 3. 修改 `MainWindow.cs`
+#### 3. 添加 App.xaml Resources
+````xml
+<Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!--  样式分离 不用的可以不引用 减少内存暂用  -->
+                <!--  DMSKin内置转换器 配色  -->
+                <ResourceDictionary Source="pack://application:,,,/DMSkin.WPF;Component/Styles/DMSkin.xaml" />
+                <!--  DMSKin内置滚动容器  -->
+                <ResourceDictionary Source="pack://application:,,,/DMSkin.WPF;Component/Styles/DMScrollViewer.xaml" />
+                <!--  DMSKin内置SVG图标  -->
+                <ResourceDictionary Source="pack://application:,,,/DMSkin.WPF;component/Styles/DMIcon.xaml" />
+                <!--  DMSKin内置按钮  -->
+                <ResourceDictionary Source="pack://application:,,,/DMSkin.WPF;component/Styles/DMButton.xaml" />
+                <!--  DMSKin内置选择框  -->
+                <ResourceDictionary Source="pack://application:,,,/DMSkin.WPF;component/Styles/DMCheckBox.xaml" />
+                <!--  DMSKin内置动画  -->
+                <ResourceDictionary Source="pack://application:,,,/DMSkin.WPF;Component/Styles/Animation.xaml" />
+                <!--  DMSKin内置输入框  -->
+                <ResourceDictionary Source="pack://application:,,,/DMSkin.WPF;component/Styles/DMTextBox.xaml" />
+                <!--  DMSKin内置滑动  -->
+                <ResourceDictionary Source="pack://application:,,,/DMSkin.WPF;component/Styles/DMSlider.xaml" />
+                <!--  DMSKin提示框  -->
+                <ResourceDictionary Source="pack://application:,,,/DMSkin.WPF;component/Styles/DMToolTip.xaml" />
+                <!--  DMSKin右键菜单  -->
+                <ResourceDictionary Source="pack://application:,,,/DMSkin.WPF;component/Styles/DMContextMenu.xaml" />
+                <!--  DMSKin其他样式  -->
+                <ResourceDictionary Source="pack://application:,,,/DMSkin.WPF;component/Styles/DMTabControl.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/DMSkin.WPF;component/Styles/DMRadioButton.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/DMSkin.WPF;component/Styles/DMTreeView.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/DMSkin.WPF;component/Styles/DMDataGrid.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/DMSkin.WPF;component/Styles/DMListBox.xaml" />
+		<ResourceDictionary Source="pack://application:,,,/DMSkin.WPF;component/Styles/DMResizeGrip.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/DMSkin.WPF;component/Styles/DMImage.xaml" />
+                <!--  最后加载项目其他的样式  -->
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+````
+#### 4. 修改 `MainWindow.cs`
 这里以引入单层方案 `DMSkinSimpleWindow` 为例，使用双层方案将`DMSkinSimpleWindow`改成`DMComplexWindow`即可。
 ````csharp
 + using DMSkin.WPF;
@@ -64,7 +108,7 @@ DFW为窗体无边框提供了两种方案：
   }
 ````
 
-#### 4. 修改 `MainWindow.xaml`
+#### 5. 修改 `MainWindow.xaml`
 ````xml
 - <Window x:Class="DMSkinTest.MainWindow" 
 + <DMSkin:DMSkinSimpleWindow
@@ -82,7 +126,7 @@ DFW为窗体无边框提供了两种方案：
 + </DMSkin:DMSkinSimpleWindow>
 ````
 若想使用双层方案，需要将上方的`DMSkinSimpleWindow`改成`DMComplexWindow`。
-#### 5. 添加系统按钮 (可选)
+#### 6. 添加系统按钮 (可选)
 ````xml
 <!-- 将下面的代码添加进 MainWindow.xaml -->
 <!-- 系统按钮属性:
@@ -106,7 +150,7 @@ DFW为窗体无边框提供了两种方案：
 </WrapPanel>
 ````
 
-#### 6. 配置你的 DFW 窗体属性 (可选)
+#### 7. 配置你的 DFW 窗体属性 (可选)
 ````js
 DMWindowShadowSize="10"               // 窗体阴影大小
 DMWindowShadowColor="#FFC8C8C8"       // 窗体阴影颜色
@@ -116,7 +160,7 @@ DMWindowShadowVisibility="False"      // 是否显示窗体阴影
 DMWindowShadowBackColor="#FF323CAD"   // 阴影背景色 (只对双层方案有效)
 ````
 
-#### 7.制作圆角窗体 (可选)
+#### 8.制作圆角窗体 (可选)
 ````xml
 <Border Background="White" CornerRadius="5"  BorderThickness="1">
         <Border.Effect>
@@ -141,8 +185,9 @@ DMWindowShadowBackColor="#FF323CAD"   // 阴影背景色 (只对双层方案有�
 ## 效果预览
 
 <img src="https://gitee.com/DreamMachine/Image/raw/master/Preview1.jpg" width="600" height="400" align="center">
-<img src="https://gitee.com/DreamMachine/Image/raw/master/GIF3.gif" width="600" height="400" align="center">
 <img src="https://gitee.com/DreamMachine/Image/raw/master/Preview2.png" width="600" height="400" align="center">
+<img src="https://raw.githubusercontent.com/944095635/DMSkin-Wallpaper-Maker/master/Screenshot/DX1.png">
+<img src="https://raw.githubusercontent.com/944095635/DMSkin-Wallpaper-Maker/master/Screenshot/DX2.png">
 
 ## 联系
 欢迎加入我们：
@@ -158,9 +203,13 @@ DMWindowShadowBackColor="#FF323CAD"   // 阴影背景色 (只对双层方案有�
 ## 捐赠
 如果你觉得这个框架真的对你很有帮助，欢迎给我捐赠，这将鼓励我做的更好!
 
-<img src="http://p40kjburh.bkt.clouddn.com/18-6-13/9034578.jpg" width="500">
+<img src="http://dmskin.com/pay.jpg" width="500">
 
 ## 更新日志
+### 2.5.1.0 (2018-11-06)
+1.优化代码（当前版本号）
+2.新增网易云Resizegrip
+
 ### 2.5.0 (2018-06-07)
 1. 将2个项目合二为一。
 
